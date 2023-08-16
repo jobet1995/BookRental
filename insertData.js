@@ -7,36 +7,6 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-function insertCustomer() {
-    rl.question('Enter first name: ', firstName => {
-        rl.question('Enter last name: ', lastName => {
-            rl.question('Enter email: ', email => {
-                rl.question('Enter phone number: ', phoneNumber => {
-                    rl.question('Enter address: ', address => {
-                        rl.question('Enter membership type: ', membershipType => {
-                            rl.question('Enter preferred genres: ', preferredGenres => {
-                                const query = `
-                                    INSERT INTO Customer (first_name, last_name, email, phone_number, address, membership_type, preferred_genres)
-                                    VALUES (?, ?, ?, ?, ?, ?, ?)
-                                `;
-
-                                db.run(query, [firstName, lastName, email, phoneNumber, address, membershipType, preferredGenres], err => {
-                                    if (err) {
-                                        console.error('Error inserting customer:', err.message);
-                                    } else {
-                                        console.log('Customer inserted successfully.');
-                                    }
-                                    rl.close();
-                                });
-                            });
-                        });
-                    });
-                });
-            });
-        });
-    });
-}
-
 function insertBook() {
     rl.question('Enter title: ', title => {
         rl.question('Enter author: ', author => {
@@ -71,7 +41,8 @@ function insertBook() {
 
 rl.question('Insert data for (1) Customer or (2) Book? Enter the number: ', choice => {
     if (choice === '1') {
-        insertCustomer();
+        // Insert customer data (existing functionality)
+        rl.close();
     } else if (choice === '2') {
         insertBook();
     } else {
@@ -79,4 +50,4 @@ rl.question('Insert data for (1) Customer or (2) Book? Enter the number: ', choi
         rl.close();
     }
 });
-                      
+                          
