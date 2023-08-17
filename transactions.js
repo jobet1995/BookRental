@@ -28,7 +28,7 @@ function createTransaction(customerId, bookId, quantity, callback) {
             VALUES (?, ?, ?, ?, ?, ?, ?)
         `;
 
-        // For simplicity, set rental start and end dates, payment status, and status.
+      
         const currentDate = calculations.getCurrentISODate();
         const rentalStartDate = currentDate;
         const rentalEndDate = currentDate;
